@@ -5,39 +5,32 @@ import java.util.Scanner;
 public class Calculator {
 
     public static void main(String[] args) {
-//        Scanner Nums = new Scanner(System.in);
-//        Scanner Oper = new Scanner(System.in);  //You only need one kind of scanner
+        calc();
+    }
+
+    private static void calc() {
         Scanner in = new Scanner(System.in);
         double fnum, snum;
         String operator;
 
-        /*
-        this loop will let the code take on input indefinitely
-        before you were calling the main method again from Calculation().
-        That is baaad practice for a whole bunch of reasons, but mainly because mutual recursion like that
-        is hard to debug and especially for beginners. Its also not the style Java is written in
-        and would cause pain in the long run.
-        */
-        while (true) {
-            System.out.println("Enter first number:");
-            fnum = in.nextDouble();
-            System.out.println("Enter Second number:");
-            snum = in.nextDouble();
-            System.out.println("What operation will be done? (+, -, *, /)");
-            operator = in.next();
+        System.out.println("Enter first number:");
+        fnum = in.nextDouble();
+        System.out.println("Enter Second number:");
+        snum = in.nextDouble();
+        System.out.println("What operation will be done? (+, -, *, /)");
+        operator = in.next();
 
-            Double ans = Calculation(fnum, snum, operator);
+        Double ans = calculate(fnum, snum, operator);
 
-            if (ans == null)
-                System.out.println("wrong operator, please try either +, -, *, or /");
-            else
-                System.out.printf("Answer is %s%n", ans);
+        if (ans == null)
+            System.out.println("wrong operator, please try either +, -, *, or /");
+        else
+            System.out.printf("Answer is %s%n", ans);
 
-            System.out.println("Enter 'C' to quit or Any Key + Enter to Continue");
-            String s = in.next();
-            if (s.equalsIgnoreCase("c"))
-                break;
-        }
+        System.out.println("Enter 'C' to quit or Any Key + Enter to Continue");
+        String s = in.next();
+        if (!s.equalsIgnoreCase("c"))
+            calc();
     }
 
     /*
@@ -50,7 +43,7 @@ public class Calculator {
         unsupported operator was requested.
         There are other (better) ways you could do that, like throwing exceptions but thats a whole other canoworms
      */
-    private static Double Calculation(double a, double b, String oper) {
+    private static Double calculate(double a, double b, String oper) {
         /*
         I changed your sequence of if-else's into a switch statement
         A switch is easier and more efficient when you are checking a range of values against one variable,
