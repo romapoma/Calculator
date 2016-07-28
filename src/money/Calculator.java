@@ -1,4 +1,4 @@
-package money;
+package src.money;
 
 import java.util.Scanner;
 

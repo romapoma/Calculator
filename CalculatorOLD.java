@@ -5,7 +5,7 @@ package money;
 import java.util.Scanner;
 
 
-public class Calculator {
+public class CalculatorOLD {
 
 	public static void main(String[] args){
 		Scanner Nums = new Scanner(System.in);
